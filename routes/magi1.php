@@ -3,6 +3,23 @@
 use Illuminate\Support\Facades\Route;
 
 /*
+| #####################
+|    Authentication
+| #####################
+|
+| Here is where you register all magi1 dashboard authentication routers.
+|
+*/
+
+Route::group([
+    'namespace' => 'Magi1',
+], function(){
+    Route::get('magi1/login', 'Magi1Controller@magi1Login')->name('magi1-login-form')->middleware('guest');
+
+    Route::post('magi1/login', 'Magi1Controller@login')->name('magi1-login')->middleware('guest');
+});
+
+/*
 |--------------------------------------------------------------------------
 | Magi 1 Routes
 |--------------------------------------------------------------------------
@@ -14,8 +31,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::group([
-    'namespace' => 'Magi1',
-    'prefix'    => '/magi1',
+    'namespace'  => 'Magi1',
+    'prefix'     => '/magi1',
+    'middleware' => 'magi_1_auth',
 ], function(){
     // Main Magi 1 Routers
     Route::group([

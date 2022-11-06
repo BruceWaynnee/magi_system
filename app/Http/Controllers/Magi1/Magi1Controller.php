@@ -1,12 +1,53 @@
 <?php
 
 namespace App\Http\Controllers\Magi1;
-
 use App\Http\Controllers\Controller;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class Magi1Controller extends Controller
 {
+
+    /**
+     * Show MAGI 1 login form.
+     * @return \Illuminate\Http\Response
+     */
+    public function magi1Login(){
+        return view('authentication.login');
+    }
+
+    /**
+     * Handle MAGI 1 income authentication request.
+     * @param \App\Http\Requests\Auth\LoginRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function login(Request $request)
+    {
+        // validate requests
+        $request->validate([
+            'username' => 'required|string|max:255',
+            'password' => 'required|string',
+        ]);
+
+        $userCredentials = $request->only('username', 'password');
+
+        dump( $request->all() );
+        dump( 'INSIDE MAGI 1 LOGIN CONTROLLER' );
+        dump( Auth::attempt($userCredentials) );
+        dd('reach to the end of line!');
+
+        // user validation
+        if( Auth::attempt($userCredentials) ){
+            $request->session()->regenerate();
+            
+            // build the magi 1 dashboard to complete this part !
+            return redirect();
+        } else {
+            // build the custom flash message to complete this part !
+        };
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -15,71 +56,5 @@ class Magi1Controller extends Controller
     public function index()
     {
         dd('INSIDE MAGI 1 PAGE!');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

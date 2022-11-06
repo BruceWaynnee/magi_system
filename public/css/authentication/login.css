@@ -1,0 +1,43 @@
+/*######################
+    Login Stylesheet
+########################*/
+/* login content */
+.login-content-wrapper {
+    color: white;
+    display: flex;
+    font-size: 1.4rem;
+    flex-flow: column wrap;
+}
+.color-rgb-green { color: rgb(4, 164, 4); }
+
+/* magi gif */
+.magi-gif-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 1.7rem 13.7rem 0 0;
+}
+.magi-gif-wrapper {
+    width: 23rem;
+    display: flex;
+}
+.magi-gif-wrapper img { width: 100%; }
+
+/* login block */
+.login-wrapper-container {
+    width: 100%;
+    padding-right: 17.7rem;
+    margin-top: 2.7rem;
+    display: flex;
+    flex-flow: column wrap;
+    align-content: flex-end;
+}
+#welcome-to-nerv-header {
+    font-size: 2.7rem;
+    color: rgb(193, 4, 4);
+}
+.custom-row {
+    display: flex;
+    flex-flow: row;
+}
+#password { margin-left: 1.5rem; }

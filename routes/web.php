@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\Magi1Authentication;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +15,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    
-    dd('ERROR!');
+    return redirect()->route('magi1-home');
 });
