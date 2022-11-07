@@ -6,10 +6,17 @@
 {{-- custom stylesheet --}}
 @section('stylesheet')
     <link rel="stylesheet" href="{{ asset('css/authentication/login.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/components/loading_component.css') }}">
 @endsection
 
 {{-- BEGIN:: Login Content --}}
 @section('content')
+    <!-- loading component content -->
+    @include('components.loading_component', [
+            'unique_element_id' => 'lc-001',
+        ]
+    )
+    <!-- loading component content -->
     <div class="login-content-wrapper">
         <!-- magi gif -->
         <div class="magi-gif-container">
@@ -43,6 +50,7 @@
 
 {{-- custom script --}}
 @section('script')
+    <script src="{{ asset('js/components/loading_component.js') }}"></script>
     <script src="{{ asset('js/utils/input_validations.js') }}"></script>
     <script src="{{ asset('js/authentication/login.js') }}"></script>
     <script>

@@ -19,8 +19,11 @@ function loginFeatureMethods(){
  */
 function validateInputFieldsBeforeSubmit(){
     $('.login-form').on('submit', function(event){
-        // start the loading animation by calling the component
-    
+        const State = this;
+        event.preventDefault();
+
+        LoadingComponent_ToggleLoading( 'lc-001', 'show' );
+
         // validate username
         let usernameResult = validateHtmlInputValue('#username');
         if( !usernameResult.data ){
@@ -35,6 +38,8 @@ function validateInputFieldsBeforeSubmit(){
             return alert('Process denied, password value is required!');
         }
     
-        // end the loading animation by calling the component
+        setTimeout( ()=>{
+            State.submit();
+        }, 2700);
     });
 }
