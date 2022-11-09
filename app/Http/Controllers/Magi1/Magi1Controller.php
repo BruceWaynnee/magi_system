@@ -32,10 +32,10 @@ class Magi1Controller extends Controller
 
         $userCredentials = $request->only('username', 'password');
 
-        dump( $request->all() );
-        dump( 'INSIDE MAGI 1 LOGIN CONTROLLER' );
-        dump( Auth::attempt($userCredentials) );
-        dd('reach to the end of line!');
+        // dump( $request->all() );
+        // dump( 'INSIDE MAGI 1 LOGIN CONTROLLER' );
+        // dump( Auth::attempt($userCredentials) );
+        // dd('reach to the end of line!');
 
         // user validation
         if( Auth::attempt($userCredentials) ){
@@ -44,7 +44,11 @@ class Magi1Controller extends Controller
             // build the magi 1 dashboard to complete this part !
             return redirect();
         } else {
-            // build the custom flash message to complete this part !
+            return back()->with('hasMessage', [
+                    'type' => 'error', 
+                    'message' => 'User credentials does not match any existing data!'
+                ]
+            );
         };
     }
 

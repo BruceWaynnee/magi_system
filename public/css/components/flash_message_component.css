@@ -1,0 +1,91 @@
+/*########################################
+    Flash Message Component Stylesheet
+#########################################*/
+.fmc-error-text { color: red; }
+.fmc-warning-text { color: rgb(220, 220, 20); }
+.fmc-info-text { color: rgb(20, 20, 213); }
+.fmc-success-text { color: rgb(4, 193, 4); }
+
+.fmc-error-border { border-color: red !important; }
+.fmc-warning-border { border-color: rgb(220, 220, 20) !important; }
+.fmc-info-border { border-color: rgb(20, 20, 213) !important; }
+.fmc-success-border { border-color: rgb(4, 193, 4) !important; }
+
+.fmc-border { 
+    border-radius: 5px; 
+    border: .2rem solid; 
+}
+
+.flash_message_component-close-tab-btn {
+    width: 17px;
+    height: 17px;
+    left: 0;
+    top: 3px;
+    right: 2.2px;
+    margin-left: auto;
+    display: flex;
+    font-size: 17px;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    align-items: center;
+    transition: all .5s;
+    border-radius: 10px;
+    justify-content: center;
+    background-color: red;
+}
+.flash_message_component-close-tab-btn:hover {
+    width: 21px;
+    height: 21px;
+    color: red;
+    font-size: 21px;
+    border-radius: unset;
+    background-color: white;
+}
+
+.flash_message_component-wrapper {    
+    width: 24rem;
+    height: 10rem;
+    top: 0px;
+    left: 0;
+    bottom: 0px;
+    right: 0;
+    z-index: 1;
+    margin: auto;
+    position: absolute;
+    padding: .1rem;
+    border-radius: 5px;
+    background-color: rgb(49, 49, 49);
+}
+
+.flash_message_component-card-wrapper {
+    width: 100%;
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.flash_message_component-heading-block {
+    display: flex;
+    align-content: center;
+    flex-flow: column wrap;
+    border-bottom: .2rem solid ;
+}
+.flash_message_component-logo-wrapper {
+    width: 3.7rem;
+    display: flex;
+    align-self: center;
+}
+.flash_message_component-logo-wrapper img { width: 100%; }
+.flash_message_component-tittle {
+    margin: 0;
+    font-size: 24px;
+}
+
+.flash_message_component-footer-block {
+    padding: .3rem;
+}
+.flash_message_compoent-message-info {
+    margin: 0;
+    color: white;
+    font-size: 11px;
+}

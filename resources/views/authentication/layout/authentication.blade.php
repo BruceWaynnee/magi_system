@@ -19,6 +19,7 @@
 
         <!-- vendor stylesheet -->
         <link rel="stylesheet" href="{{ asset('css/vendor/bootstrap4.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/components/flash_message_component.css') }}">
         <link rel="stylesheet" href="{{ asset('css/authentication/layout/authentication.css') }}">
         
         <!-- custom stylesheet -->
@@ -26,6 +27,17 @@
     </head>
     {{-- Body Content Block --}}
     <body class="nerv-background">
+        @if ( session('hasMessage') )
+            <section class="flash-message">
+                @include('components.flash_message_component', [
+                        'canClose'    => true,
+                        'messageType' => session('hasMessage')['type'],
+                        'message'     => session('hasMessage')['message'],
+                    ]
+                )
+            </section>
+        @endif
+
         <section class="authentication-content-wrapper">
             @yield('content')
         </section>
@@ -37,6 +49,7 @@
         {{-- Custom Script Block --}}
             <!-- vendor script -->
             <script src="{{ asset('js/vendor/jquery.min.js') }}"></script>
+            <script src="{{ asset('js/components/flash_message_component.js') }}"></script>
             <script src="{{ asset('js/vendor/bootstrap4.min.js') }}"></script>
             
             <!-- custom script -->
