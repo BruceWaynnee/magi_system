@@ -1,3 +1,6 @@
+/*##################################
+    Loading Component Stylesheet
+###################################*/
 /* Since it's gonna be circle, width and height are the same. */
 .hide-loader_component { display: none; }
 
