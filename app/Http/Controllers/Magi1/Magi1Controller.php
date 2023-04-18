@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Magi1;
 use App\Http\Controllers\Controller;
-
+use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,9 +32,8 @@ class Magi1Controller extends Controller
 
         $userCredentials = $request->only('username', 'password');
 
-        // dump( $request->all() );
-        // dump( 'INSIDE MAGI 1 LOGIN CONTROLLER' );
         // dump( Auth::attempt($userCredentials) );
+        // dump( 'INSIDE MAGI 1 LOGIN CONTROLLER' );
         // dd('reach to the end of line!');
 
         // user validation
@@ -42,10 +41,15 @@ class Magi1Controller extends Controller
             $request->session()->regenerate();
             
             // build the magi 1 dashboard to complete this part !
-            return redirect();
+            return redirect()
+                ->intended(RouteServiceProvider::MAGI1DASHBOARD)
+                ->with('hasMessage', [
+                    'type'    => 'success',
+                    'message' => 'Succesful logged into MAGI 1',
+                ]);
         } else {
             return back()->with('hasMessage', [
-                    'type' => 'error', 
+                    'type'    => 'error', 
                     'message' => 'User credentials does not match any existing data!'
                 ]
             );
@@ -57,8 +61,8 @@ class Magi1Controller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index( Request $request )
     {
-        dd('INSIDE MAGI 1 PAGE!');
+        return view('magi1_dashboard.pages.index');
     }
 }

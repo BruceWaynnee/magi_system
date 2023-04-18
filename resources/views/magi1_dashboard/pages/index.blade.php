@@ -1,0 +1,1 @@
+@extends('magi1_dashboard.layout.app')
